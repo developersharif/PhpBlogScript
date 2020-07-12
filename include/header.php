@@ -14,11 +14,19 @@ $settings=$site_status->fetch_assoc();
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="lib/style.css">
-    <link rel="stylesheet" href="lib/fontawesome/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prelodr/2.1.1/prelodr.min.css" integrity="sha512-gLcgYRVRa2jY9lt1ncKalkCiinnkvPxEaW+6IFc8V5W6l1kyaaUCFxsZUkhL4i37WVH4PYcuw7PG8D0DBYp89Q==" crossorigin="anonymous" />
   <script src="lib/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-
+<style>
+  :root{
+    --primary-color:<?php echo $settings['site_color']; ?>;
+  }
+</style>
 </head>
 <body>
+  <!-- Preloader -->
+<div id="preloader">
+  <div id="status">&nbsp;</div>
+</div>
 <nav class="navbar navbar-expand-lg navbar-light navbar-inverse navbar-fixed-top" style="background-color: <?php echo $settings['site_color'] ?>">
   <a class="navbar-brand" href="index.php" style="color: white"><?php echo $settings['site_name']; ?></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

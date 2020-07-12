@@ -58,7 +58,10 @@ $valide=new validation();
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <b>BlogName</b>
+    <b><?php $site_status=$main->select("select * from settings");
+$settings=$site_status->fetch_assoc(); 
+echo $settings["site_name"];
+?></b>
   </div>
   <!-- /.login-logo -->
   <div class="card">

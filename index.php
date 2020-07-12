@@ -28,7 +28,7 @@ echo $settings['notice'];
  <?php
       while ($post=$result->fetch_assoc()) {
       ?>
-        <div class="col-md-6 ">
+        <div class="col-md-4 col-sm-6">
           <div class="card post-card"><a href="article.php?id=<?php echo $post["id"]; ?>">
                <img class="card-img-top" src="images/thumb/<?php echo $post['thumb']; ?>" alt="Card image">
                <div class="categories"><?php echo $post["category"];?></div>

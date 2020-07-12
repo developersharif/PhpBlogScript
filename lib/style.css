@@ -4,6 +4,7 @@ author url:google.com/search?q=developersharif;
 **/
 body{
 	background-color: #f1f1f1;
+   overflow: hidden;
 }
 .navbar {
     position: relative;
@@ -21,7 +22,15 @@ body{
 	float: right!important;
 }
 .border-left{
-	    border-left: 3px solid #009688!important;
+	    border-left: 3px solid var(--primary-color)!important;
+}
+button .btn{
+  background-color: var(--primary-color)!important;
+  color: white!important;
+}
+button .btn:hover{
+  background-color: var(--primary-color)!important;
+  color: white!important;
 }
 .noticeboard{
 	    border-left-style: solid;
@@ -196,6 +205,35 @@ background: linear-gradient(to bottom, #d4cbcb,#117a8b);
                    border-radius:20px;
                    font-size:20px;
                    color:#fff;
+}
+/* Preloader */
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0909096b;
+  /* change if the mask should have another color then white */
+  z-index: 99;
+  /* makes sure it stays on top */
+}
+
+#preloader #status {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  /* centers the loading animation horizontally one the screen */
+  top: 50%;
+  /* centers the loading animation vertically one the screen */
+  background-image: url(../lib/svg/loading.svg);
+  /* path to your loading animation */
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -100px 0 0 -100px;
+  /* is width and height divided by two */
 }
 .noscript{
     animation: noscript 5s linear infinite;

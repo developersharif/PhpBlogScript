@@ -16,7 +16,7 @@ exit();
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Admin::Dashboard </title>
-  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="../lib/style.css">
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
@@ -24,7 +24,6 @@ exit();
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
-
   <style>
     a .text-white{
       color: white;
@@ -35,6 +34,9 @@ exit();
   </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <div id="preloader">
+  <div id="status">&nbsp;</div>
+</div>
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-dark ">
@@ -125,7 +127,7 @@ exit();
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="" class="brand-link">
+    <a href="index.php" class="brand-link">
       <img src="../images/profile/<?php echo $user->query('avatar') ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light small"><?php echo strtoupper($user->query('role'));?></span>
