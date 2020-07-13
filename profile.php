@@ -165,7 +165,7 @@ $user_row=$main_op->db_query("users","id",$user_id);
          
         ?>
         <div class="p-post">
-          <a href="article.php?id=<?php echo $post["id"]; ?>" class="list-group-item list-group-item-action">
+          <a href="edit.php?id=<?php echo $post["id"]; ?>" class="list-group-item list-group-item-action">
           <img src="images/thumb/<?php echo $post["thumb"];?>"/><?php echo $post["title"];?>
            <div class="post-info"><div class="row">
               <div class="col"><?php echo $format->views($post["views"]);?> views</div>

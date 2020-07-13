@@ -1,12 +1,12 @@
 <?php
-session_start();
 require("configer/header.php");
-if (isset($_SESSION['admin'])) {
+$admin=new admin();
+$user=new user();
+$main=new main();
+if (isset($_COOKIE['c_user']) and $admin->admin_check($_COOKIE['c_user'])==true) {
 header("location: index.php");
 exit();
-} else {
- $user=new user();
-$main=new main();
+} elseif(isset($_POST['submit'])){
 $valide=new validation();
  if (isset($_POST['submit']) and !empty(trim($_POST['email'])) and !empty($_POST['password']) and $_SERVER['REQUEST_METHOD']=="POST"){
     $email=$valide->validate($_POST['email']);
@@ -17,10 +17,13 @@ $valide=new validation();
     if (password_verify($pass, $db_pass)) {
       $num_rows= $query=$main->num_rows("SELECT * FROM admin WHERE uid=$user_id");
       if ($num_rows==1) {
-        $_SESSION['admin']=$user_id;
+        $auth=md5(sha1($email.$_POST['password']));
+        $cookie_name = 'c_user';
+        $cookie_value = $auth;
+        setcookie($cookie_name, $cookie_value, time() + (86400 * 10), "/"); // 86400 = 1 day
         header("location: index.php?loged");
       } else {
-        header("location: ../index.php");
+        header("location: ../login.php");
       }
       
 

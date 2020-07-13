@@ -74,7 +74,7 @@ $result=$main->select("SELECT content.id,content.uid,content.title,content.thumb
   <div class="row">
   	<div class="col">
   		<div class="card comments">
-  			comment section....
+      <div id="disqus_thread"></div>
   		</div>
   	</div>
   </div>
@@ -143,7 +143,15 @@ $result=$main->select("SELECT content.id,content.uid,content.title,content.thumb
 	</div><!--right side start-->
 	</div><!--row end-->
 </div>
-
+<script>
+  (function () {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://developersharif.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+</script>
+<script id="dsq-count-scr" src="//developersharif.disqus.com/count.js" async></script>
 <?php include('include/footer.php');?>
 </body>
 </html>

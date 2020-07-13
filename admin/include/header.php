@@ -3,10 +3,17 @@ session_start();
 require("configer/header.php");
 $admin=new admin();
 $user=new user(); 
-if ($admin->admin_check($_SESSION['admin'])==false) {
-header("location: logout.php");
-exit();
+if(isset($_COOKIE['c_user'])){
+
+  if ($admin->admin_check($_COOKIE['c_user'])==false) {
+    header("location: logout.php");
+    exit();
+    }
+}elseif(!isset($_COOKIE['c_user'])){
+  header("location: logout.php");
+    exit();
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -16,7 +23,7 @@ exit();
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Admin::Dashboard </title>
-  <link rel="stylesheet" href="../lib/style.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
@@ -128,7 +135,7 @@ exit();
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="../images/profile/<?php echo $user->query('avatar') ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="../images/profile/<?php echo $user->query('avatar') ?>" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light small"><?php echo strtoupper($user->query('role'));?></span>
     </a>

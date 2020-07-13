@@ -1,10 +1,74 @@
-<?php
-$text='
+<pre>
+
+hello 
 
 
-';
 
 
-echo str_word_count($text);
 
-?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+hello 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+</pre>
+<script>
+window.addEventListener('scroll', function() {
+    console.log("Scrollin'");
+});
+</script>

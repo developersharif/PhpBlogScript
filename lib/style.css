@@ -4,7 +4,7 @@ author url:google.com/search?q=developersharif;
 **/
 body{
 	background-color: #f1f1f1;
-   overflow: hidden;
+    overflow: hidden;
 }
 .navbar {
     position: relative;
@@ -17,6 +17,7 @@ body{
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 0px 10px;
+    margin-bottom: 4px;;
 }
 .float-right{
 	float: right!important;
@@ -24,16 +25,16 @@ body{
 .border-left{
 	    border-left: 3px solid var(--primary-color)!important;
 }
-button .btn{
+.btn{
   background-color: var(--primary-color)!important;
   color: white!important;
 }
-button .btn:hover{
-  background-color: var(--primary-color)!important;
-  color: white!important;
-}
+.btn:hover{
+    background-color: var(--primary-color)!important;
+    color: white!important;
+  }
 .noticeboard{
-	    border-left-style: solid;
+	border-left-style: solid;
     border-left-color: #e9343d;
     border-left-width: 140px;
     border-radius: 4px;
@@ -247,3 +248,22 @@ background: linear-gradient(to bottom, #d4cbcb,#117a8b);
     100% {background-color: deeppink; left:0px; top:0px;transform: scale(.5);border-radius:5px;}
  }
 
+ ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary-color); 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color); 
+  }

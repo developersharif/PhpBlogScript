@@ -30,5 +30,3 @@ $(".dark-mode").ready(function(){$("body,input,textarea,select,option,a,button,d
 <script src="lib/function.js" type="text/javascript"></script>
 <script src="lib/jquery.min.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html-minifier/4.0.0/htmlminifier.min.js" integrity="sha512-4iIsNBIgG/kZCukIg4oZDZe1ZBRUFfklAGUVpbck6xqjd+tBeX2WqtZChk/HrERHqEBky20H+UqUabF9whH+cw==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prelodr/2.1.1/prelodr.min.js" integrity="sha512-t76R0bdFD5OrnZy0Tz3H8WV3mCBX+Y69ROSpoQTA2UZGeQwoU2WXhvw+JAl1xB0aZCmokWlzaaUxgRuHcCph1g==" crossorigin="anonymous"></script>

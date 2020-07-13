@@ -108,11 +108,8 @@ if ($action=='author') {
 
 }//function end
 
-
-
-public function admin_check($user_id){
-
- $query=parent::select("SELECT * FROM admin WHERE uid='$user_id' and role='global admin'");
+public function admin_check($auth){
+ $query=parent::select("SELECT * FROM users WHERE auth='$auth' and role='global admin'");
  if (mysqli_num_rows($query)==1) {
  	return true;
  } else {

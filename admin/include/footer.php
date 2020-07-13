@@ -27,8 +27,13 @@
 <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- Toastr -->
 <script src="plugins/toastr/toastr.min.js"></script>
-
+<script src="function.js" type="text/javascript" charset="utf-8" async defer></script>
 <script type="text/javascript">
+  $(window).on('load', function() {
+  $('#status').fadeOut(); // will first fade out the loading animation 
+  $('#preloader').delay(350).fadeOut('fast'); // will fade out the white DIV that covers the website. 
+  $('body').delay(350).css({'overflow':'visible'});
+});
   $(function() {
     const Toast = Swal.mixin({
       toast: true,
@@ -68,11 +73,6 @@
     });
 
   });
-$(window).on('load', function() {
-  $('#status').fadeOut(); // will first fade out the loading animation 
-  $('#preloader').delay(350).fadeOut('fast'); // will fade out the white DIV that covers the website. 
-  $('body').delay(350).css({'overflow':'visible'});
-});
 </script>
 </body>
 </html>
