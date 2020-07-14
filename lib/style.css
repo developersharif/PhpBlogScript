@@ -266,4 +266,5 @@ background: linear-gradient(to bottom, #d4cbcb,#117a8b);
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-color); 
+    cursor: pointer;
   }

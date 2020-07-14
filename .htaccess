@@ -2,11 +2,20 @@ RewriteEngine On
 
 RewriteRule ^([^/.]+)$ $1.php [NC,L]
 RewriteRule ^([^/.]+)$ $1.html [NC,L]
-
-
-
-
-
+# Disable Directory Browsing
+Options All -Indexes
+# cache images and flash content for one month
+<FilesMatch ".(flv|gif|jpg|jpeg|png|ico|swf)$">
+	Header set Cache-Control "max-age=2592000"
+</FilesMatch>
+# cache text, css, and javascript files for one week
+<FilesMatch ".(js|css|pdf|txt)$">
+	Header set Cache-Control "max-age=604800"
+</FilesMatch>
+# cache html and htm files for one day
+<FilesMatch ".(html|htm)$">
+	Header set Cache-Control "max-age=43200"
+</FilesMatch>
 ErrorDocument 400 /400.html
 ErrorDocument 401 /401.html
 ErrorDocument 403 /403.html

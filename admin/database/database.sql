@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2020 at 04:10 PM
+-- Generation Time: Jul 14, 2020 at 08:49 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -51,6 +51,22 @@ CREATE TABLE `categories` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `title` varchar(101) NOT NULL,
+  `message` text NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ip` varchar(32) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `content`
 --
 
@@ -70,6 +86,28 @@ CREATE TABLE `content` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` int(11) NOT NULL,
+  `site_name` varchar(50) NOT NULL,
+  `site_title` varchar(101) NOT NULL,
+  `site_description` varchar(150) NOT NULL,
+  `notice` varchar(101) DEFAULT NULL,
+  `site_logo` varchar(60) NOT NULL,
+  `site_banner` varchar(60) NOT NULL,
+  `site_color` varchar(10) NOT NULL,
+  `dark_mode` varchar(3) NOT NULL DEFAULT 'off',
+  `new_post` varchar(5) NOT NULL,
+  `perpage_post` int(255) NOT NULL DEFAULT '5',
+  `reg_status` varchar(5) NOT NULL,
+  `site_status` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -82,7 +120,7 @@ CREATE TABLE `users` (
   `pass` varchar(60) NOT NULL,
   `auth` varchar(60) NOT NULL,
   `phone` int(15) NOT NULL,
-  `avatar` varchar(50) NOT NULL,
+  `avatar` varchar(50) NOT NULL DEFAULT 'avatar.png',
   `bio` varchar(101) NOT NULL,
   `role` varchar(25) NOT NULL DEFAULT 'subscriber',
   `ip` varchar(40) NOT NULL,
@@ -106,9 +144,21 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `content`
 --
 ALTER TABLE `content`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -134,10 +184,22 @@ ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `content`
 --
 ALTER TABLE `content`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

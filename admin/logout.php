@@ -1,6 +1,6 @@
 <?php
-session_start();
-session_unset();
-header("location: login.php");
+setcookie("c_user", "", time() - (86400 * 10), "/");
+
+header("location: login");
 
 ?>
