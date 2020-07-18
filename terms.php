@@ -1,0 +1,1 @@
+<b>terms page</b>

@@ -1,16 +1,16 @@
-<?php 
+<?php
 session_start();
 require("configer/header.php");
-$admin=new admin();
-$user=new user(); 
-if(isset($_COOKIE['c_user'])){
+$admin = new admin();
+$user = new user();
+if (isset($_COOKIE['c_user'])) {
 
-  if ($admin->admin_check($_COOKIE['c_user'])==false) {
-    header("location: logout");
-    exit();
+    if ($admin->admin_check($_COOKIE['c_user']) == false) {
+        header("location: logout");
+        exit();
     }
-}elseif(!isset($_COOKIE['c_user'])){
-  header("location: logout");
+} elseif (!isset($_COOKIE['c_user'])) {
+    header("location: logout");
     exit();
 }
 
@@ -142,7 +142,7 @@ if(isset($_COOKIE['c_user'])){
             <a href="index" class="brand-link">
                 <img src="../images/profile/<?php echo $user->query('avatar') ?>"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light small"><?php echo strtoupper($user->query('role'));?></span>
+                <span class="brand-text font-weight-light small"><?php echo strtoupper($user->query('role')); ?></span>
             </a>
 
             <!-- Sidebar -->
@@ -181,6 +181,12 @@ if(isset($_COOKIE['c_user'])){
                                     <a href="posts" class="nav-link">
                                         <i class="nav-icon far fa-circle text-danger"></i>
                                         <p class="text">Posts</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pageupdate" class="nav-link">
+                                        <i class="nav-icon far fa-circle text-danger"></i>
+                                        <p class="text">Page Update</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">

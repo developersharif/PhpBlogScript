@@ -1,8 +1,14 @@
 <?php
+ini_set('display_errors', 'off');
 require('include/classes.php');
 date_default_timezone_set("asia/dhaka");
-$user = new user();
 $main_cls = new main();
+$user = new user();
+$db_check = $main_cls->db_check();
+if ($db_check != true) {
+    header("location: system/install/index.php");
+    exit;
+}
 $site_status = $main_cls->select("select * from settings");
 $settings = $site_status->fetch_assoc();
 ?>

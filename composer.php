@@ -1,14 +1,12 @@
 <?php
 require("include/header.php");
 if($settings['site_status']==='on'){
-
- 
+$user=new user();
 if($settings['new_post']==='on'){
-
+    if ($user->check_usr()==false) { header("location: index"); exit(); } 
    if (isset($_POST["submit"]) and !empty(trim($_POST['content'])) and $_SERVER['REQUEST_METHOD'] == "POST" and !empty(trim($_POST['title'])) ) {
 //object
     $main=new main();
-    $user=new user();
     $validate=new validation();
     $img=new image();
     $uid=$user->id();

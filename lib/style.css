@@ -171,7 +171,7 @@ colour:#fff;
 margin-top:50px;
 margin-bottom:20px;
 }
-body.signup{
+ .signup{
 background: linear-gradient(to bottom, #d4cbcb,#117a8b);
 }
 .frame h2{

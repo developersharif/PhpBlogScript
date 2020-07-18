@@ -6,6 +6,7 @@ require("include/header.php");
     $validate=new validation();
     $img=new image();
     $uid=$user->id();
+if ($user->check_usr()==false) { header("location: index"); exit(); } 
 if($settings['site_status']==='on'){
 $post_id=$_GET['id'];
 $num_rows=$main->num_rows("select * from content where id='$post_id' and uid='$uid'");
