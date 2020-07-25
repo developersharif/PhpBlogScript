@@ -1,47 +1,45 @@
 <?php
 require("include/header.php");
-if($settings['site_status']==='on'){
-$user=new user();
-if($settings['new_post']==='on'){
-    if ($user->check_usr()==false) { header("location: index"); exit(); } 
-   if (isset($_POST["submit"]) and !empty(trim($_POST['content'])) and $_SERVER['REQUEST_METHOD'] == "POST" and !empty(trim($_POST['title'])) ) {
-//object
-    $main=new main();
-    $validate=new validation();
-    $img=new image();
-    $uid=$user->id();
+if ($settings['site_status'] === 'on') {
+    $user = new user();
+    if ($settings['new_post'] === 'on') {
+        if ($user->check_usr() == false) {
+            header("location: index");
+            exit();
+        }
+        if (isset($_POST["submit"]) and !empty(trim($_POST['content'])) and $_SERVER['REQUEST_METHOD'] == "POST" and !empty(trim($_POST['title']))) {
+            //object
+            $main = new main();
+            $validate = new validation();
+            $img = new image();
+            $uid = $user->id();
+            $title = $validate->validate($_POST['title']);
+            $category = $validate->validate($_POST['category']);
+            $content = $validate->post_validate($_POST['content']);
+            $thumb_name = uniqid() . ".png";
+            $destination = "images/thumb/" . $thumb_name;
+            $img->compress('thumb', $destination, 20);
+            $status = $user->query("role");
+            if ($status == 'author') {
+                $status = "published";
+            } elseif ($status == "admin" or $status == 'global admin') {
+                $status = "published";
+            } elseif ($status == "moderator") {
+                $status = "published";
+            } elseif ($status == "editor") {
+                $status = "published";
+            } else {
+                $status = "pending";
+            }
 
-$title=$validate->validate($_POST['title']);
-$category=$validate->validate($_POST['category']);
-$content=$validate->post_validate($_POST['content']);
-$thumb_name=uniqid().".png";
-$destination="images/thumb/".$thumb_name;
-$img->compress('thumb',$destination,20);
-
-$status=$user->query("role");
-if ($status=='author') {
-  $status="published";
-}elseif ($status=="admin" or $status=='global admin') {
- $status="published";
-}elseif ($status=="moderator") {
- $status="published";
-}elseif ($status=="editor") {
- $status="published";
-}
-else {
-  $status="pending";
-}
-
-$insert=$main->insert("INSERT INTO `content`( `uid`, `title`, `thumb`, `content`, `category`, `status`) VALUES (
+            $insert = $main->insert("INSERT INTO `content`( `uid`, `title`, `thumb`, `content`, `category`, `status`) VALUES (
 '$uid','$title','$thumb_name','$content','$category','$status');");
-if ($insert) {
-  $submited="Submitted Your post";
-} else {
-  echo "<b>Error</b>";
-}
-
-
-}
+            if ($insert) {
+                $submited = "Submitted Your post";
+            } else {
+                echo "<b>Error</b>";
+            }
+        }
 ?>
 
 <title>New Post</title>
@@ -66,11 +64,11 @@ if ($insert) {
             <div class="col-md-12 col">
                 <div class="card card-outline card-info">
                     <div class="card-header">
-                        <?php if(isset($submited)){ ?> <center>
+                        <?php if (isset($submited)) { ?> <center>
                             <div class="alert alert-success">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <?php echo $submited;?></div>
-                        </center><?php }?>
+                                <?php echo $submited; ?></div>
+                        </center><?php } ?>
                         <!-- tools box -->
                         <div class="card-tools">
                         </div>
@@ -95,14 +93,14 @@ if ($insert) {
                                         <h6>category</h6>
                                     </label>
                                     <select name="category" id="categories" class="form-control">
-                                        <?php 
-                              $main=new main();
-                              $select=$main->select("select category from categories where role='user' order by category;");
-                              while ($cate=$select->fetch_assoc()){
-                              ?>
+                                        <?php
+                                                $main = new main();
+                                                $select = $main->select("select category from categories where role='user' order by category;");
+                                                while ($cate = $select->fetch_assoc()) {
+                                                ?>
                                         <option value="<?php echo $cate['category']; ?>">
                                             <?php echo $cate['category']; ?></option>
-                                        <?php }?>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -130,11 +128,11 @@ if ($insert) {
         </div>
     </section>
     </div>
-    <?php 
-               }else{
-                echo "<center>New Post Disabled</center>";
-               }
-              include('include/footer.php');?>
+    <?php
+    } else {
+        echo "<center>New Post Disabled</center>";
+    }
+    include('include/footer.php'); ?>
     <!-- jQuery -->
     <script src="lib/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -152,7 +150,7 @@ if ($insert) {
 </body>
 
 </html>
-<?php }else{?>
+<?php } else { ?>
 <center>
     <h3>Under Maintenance</h3>
 </center>

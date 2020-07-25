@@ -11,10 +11,10 @@ $totall_member = $main->num_rows("select * from users");
 
 
 if (isset($_GET['action']) and isset($_GET['id'])) {
-  $action_msg = $admin->action_post($_GET['action'], $_GET['id']);
+    $action_msg = $admin->action_post($_GET['action'], $_GET['id']);
 }
 if (isset($_GET['role']) and isset($_GET['id'])) {
-  $action_msg = $admin->action_user($_GET['id'], $_GET['role']);
+    $action_msg = $admin->action_user($_GET['id'], $_GET['role']);
 }
 
 ?>
@@ -34,9 +34,9 @@ if (isset($_GET['role']) and isset($_GET['id'])) {
             </div><!-- /.col -->
         </div><!-- /.row -->
         <?php if (isset($action_msg)) {
-      echo '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' . $action_msg . '</div>';
-    }
-    ?>
+            echo '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' . $action_msg . '</div>';
+        }
+        ?>
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
@@ -142,11 +142,11 @@ if (isset($_GET['role']) and isset($_GET['id'])) {
                                 <tbody>
 
                                     <?php
-                  $limit = 10;
-                  $query = $main->select("select * from content order by id desc limit $limit");
-                  while ($row = $query->fetch_assoc()) {
+                                    $limit = 10;
+                                    $query = $main->select("select * from content order by id desc limit $limit");
+                                    while ($row = $query->fetch_assoc()) {
 
-                  ?>
+                                    ?>
 
 
                                     <tr>
@@ -155,12 +155,13 @@ if (isset($_GET['role']) and isset($_GET['id'])) {
                                                 href="posts.php?id=<?php echo $row['id'];  ?>"><?php echo $row['title']; ?></a>
                                         </td>
                                         <td><span class="badge badge-<?php if ($row['status'] == 'published') {
-                                                      echo "success";
-                                                    } elseif ($row['status'] == 'pending') {
-                                                      echo "warning";
-                                                    } elseif ($row['status'] == "banned") {
-                                                      echo "danger";
-                                                    } ?>"><?php echo $row['status']; ?></span></td>
+                                                                                echo "success";
+                                                                            } elseif ($row['status'] == 'pending') {
+                                                                                echo "warning";
+                                                                            } elseif ($row['status'] == "banned") {
+                                                                                echo "danger";
+                                                                            } ?>"><?php echo $row['status']; ?></span>
+                                        </td>
                                         <td>
                                             <div class="sparkbar" data-color="#00a65a" data-height="20">
                                                 <?php echo $format->time_ago($row['date']); ?></div>
@@ -170,7 +171,7 @@ if (isset($_GET['role']) and isset($_GET['id'])) {
 
                                         <td>
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-success"><a
+                                                <button type="button" class="btn btn-primary"><a
                                                         href="?action=publish&id=<?php echo $row['id']; ?>"
                                                         class="text-white">Publish</a></button>
                                                 <button type="button" class="btn btn-primary dropdown-toggle"
@@ -233,9 +234,9 @@ if (isset($_GET['role']) and isset($_GET['id'])) {
                             <div class="card-body p-0">
                                 <ul class="users-list clearfix">
                                     <?php
-                  $query = $main->select("select * from users order by id desc limit 25");
-                  while ($row = $query->fetch_assoc()) {
-                  ?>
+                                    $query = $main->select("select * from users order by id desc limit 25");
+                                    while ($row = $query->fetch_assoc()) {
+                                    ?>
                                     <li data-toggle="modal" data-target="#<?php echo $row["username"]; ?>">
                                         <img src="../images/profile/<?php echo $row['avatar']; ?>">
                                         <a class="users-list-name"
@@ -272,13 +273,13 @@ if (isset($_GET['role']) and isset($_GET['id'])) {
                                                             </div>
 
                                                             <?php
-                                $user_id = $row['id'];
-                                $pub_post = $main->num_rows("select * from content where uid='$user_id' and status='published'");
-                                $pen_post = $main->num_rows("select * from content where uid='$user_id' and status='pending'");
-                                $ben_post = $main->num_rows("select * from content where uid='$user_id' and status='banned'");
-                                $admin_tbl = $main->db_query("admin", "uid", "$user_id");
-                                $admin_status = $admin_tbl['role'];
-                                ?>
+                                                                $user_id = $row['id'];
+                                                                $pub_post = $main->num_rows("select * from content where uid='$user_id' and status='published'");
+                                                                $pen_post = $main->num_rows("select * from content where uid='$user_id' and status='pending'");
+                                                                $ben_post = $main->num_rows("select * from content where uid='$user_id' and status='banned'");
+                                                                $admin_tbl = $main->db_query("admin", "uid", "$user_id");
+                                                                $admin_status = $admin_tbl['role'];
+                                                                ?>
 
                                                             <div class="card-footer">
                                                                 <div class="row">
@@ -463,9 +464,9 @@ if (isset($_GET['role']) and isset($_GET['id'])) {
                     <!-- /.card-header -->
                     <div class="card-body p-0">
                         <?php
-            $result = $main->select("SELECT content.id,content.uid,content.title,content.thumb,content.content,content.category,content.date, content.status,content.views, users.name FROM content INNER JOIN users ON content.uid=users.id and content.status='published' ORDER BY id DESC");
-            while ($post = $result->fetch_assoc()) {
-            ?>
+                        $result = $main->select("SELECT content.id,content.uid,content.title,content.thumb,content.content,content.category,content.date, content.status,content.views, users.name FROM content INNER JOIN users ON content.uid=users.id and content.status='published' ORDER BY id DESC");
+                        while ($post = $result->fetch_assoc()) {
+                        ?>
                         <ul class="products-list product-list-in-card pl-2 pr-2">
                             <li class="item">
                                 <div class="product-img">
@@ -489,7 +490,7 @@ if (isset($_GET['role']) and isset($_GET['id'])) {
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer text-center">
-                        <a href="javascript:void(0)" class="uppercase">View All</a>
+                        <a href="posts.php" class="uppercase">View All</a>
                     </div>
                     <!-- /.card-footer -->
                 </div>

@@ -1,12 +1,13 @@
 <?php
-  /**
-   * image class
-   */
-  class image extends main
-  {
-  	
 
-protected  function compress_image($tmpfile, $destination_url, $qualitysize)
+/**
+ * image class
+ */
+class image
+{
+
+
+    protected  function compress_image($tmpfile, $destination_url, $qualitysize)
     {
         $info = getimagesize($tmpfile);
         if ($info['mime'] == 'image/jpeg') $image = imagecreatefromjpeg($tmpfile);
@@ -17,35 +18,35 @@ protected  function compress_image($tmpfile, $destination_url, $qualitysize)
     }
 
 
- public function compress($name,$destination,$quality){
-    $file_name = $_FILES["$name"]["name"];
-    $file_type = $_FILES["$name"]["type"];
-    $temp_name = $_FILES["$name"]["tmp_name"];
-    $file_size = $_FILES["$name"]["size"];
-    $error = $_FILES["$name"]["error"];
-    if (!$temp_name)
+    public function compress($name, $destination, $quality)
     {
-        return false;
-        exit();
+        $file_name = $_FILES["$name"]["name"];
+        $file_type = $_FILES["$name"]["type"];
+        $temp_name = $_FILES["$name"]["tmp_name"];
+        $file_size = $_FILES["$name"]["size"];
+        $error = $_FILES["$name"]["error"];
+        if (!$temp_name) {
+            return false;
+            exit();
+        }
+
+        if ($error > 0) {
+            echo $error;
+        } else if (($file_type == "image/gif") || ($file_type == "image/jpeg") || ($file_type == "image/png") || ($file_type == "image/pjpeg")) {
+            return  $this->compress_image($temp_name, $destination, $quality);
+        } else {
+            return  "Uploaded image should be jpg or gif or png.";
+        }
     }
 
-    if ($error > 0)
+    public function upload($file, $destination)
     {
-        echo $error;
+        $tmpfile = $_FILES["$file"]["tmp_name"];
+        $upload = move_uploaded_file("$tmpfile", "$destination");
+        if ($upload) {
+            return true;
+        } else {
+            return false;
+        }
     }
-    else if (($file_type == "image/gif") || ($file_type == "image/jpeg") || ($file_type == "image/png") || ($file_type == "image/pjpeg"))
-    {
-        return  $this->compress_image($temp_name, $destination, $quality);
-    }
-    else
-    {
-        return  "Uploaded image should be jpg or gif or png.";
-    }
-
- }
-
-
-
-  }
-    
- ?>
+}

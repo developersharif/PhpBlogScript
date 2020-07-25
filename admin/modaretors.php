@@ -1,4 +1,4 @@
-<?php 
+<?php
 require("include/header.php");
 ?>
 
@@ -6,13 +6,13 @@ require("include/header.php");
 
 
 
-<center>Modaretors Feature disabled</center>
+<center>User role manager coming soon</center>
 
 
 
 
 
 
-<?php 
+<?php
 require("include/footer.php");
 ?>

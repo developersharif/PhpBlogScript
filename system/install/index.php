@@ -87,7 +87,7 @@ echo "Failed to import tables!";
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Database Name</label>
                             <input type="text" class="form-control" id="dbname" name="dbname"
-                                placeholder="Database Name" required>
+                                placeholder="Database Name (white space not allow)" pattern="^\S+$" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">Database Username</label>

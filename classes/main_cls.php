@@ -17,6 +17,8 @@ class main
 		} elseif (mysqli_connect_errno()) {
 			$this->dblink = 'database error';
 		}
+		ini_set('display_errors', 'off');
+		date_default_timezone_set("asia/dhaka");
 	}
 
 	public function db_check()

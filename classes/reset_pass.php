@@ -13,7 +13,7 @@ class reset_pass extends main
             $site = $_SERVER['SERVER_NAME'];
             $to = $user_email;
             $subject = "Password Reset.";
-            $message = '<a href="http://' . $site . '/reset-password.php?token=' . $token . '">' . 'Reset password</a>';
+            $message = '<a href="http://' . $site . '/reset-password.php?token=' . $token . '">' . 'Click here to reset password</a><br>' . $site;
             // Always set content-type when sending HTML email
             $headers = "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";

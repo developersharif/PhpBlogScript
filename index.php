@@ -13,7 +13,22 @@ if ($settings['site_status'] === 'on') {
   $start = $calc - $perpage;
   $result = $main->select("SELECT content.id,content.uid,content.title,content.thumb,content.category,content.date, content.status,content.views, users.name FROM content INNER JOIN users ON content.uid=users.id and content.status='published' ORDER BY id DESC limit $start, $perpage");
 ?>
-<title>Home </title>
+<title>Home-<?php echo $settings['site_title']; ?></title>
+<!-- Primary Meta Tags -->
+<meta name="title" content="<?php echo $settings['site_title']; ?>">
+<meta name="description" content="<?php echo $settings['site_description']; ?>">
+
+<!-- Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="<?php echo $settings['site_title']; ?>">
+<meta property="og:description" content="<?php echo $settings['site_description']; ?>">
+<meta property="og:image" content="images/assets/bannar.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="<?php echo $settings['site_title']; ?>">
+<meta property="twitter:description" content="<?php echo $settings['site_description']; ?>">
+<meta property="twitter:image" content="images/assets/bannar.png">
 <div class="container-fluid">
     <?php if ($settings['notice'] != '') { ?><div class="noticeboard">
         <p class="notice-t">Noticce:</p>
@@ -33,16 +48,21 @@ if ($settings['site_status'] === 'on') {
                 <div class="col-md-4 col-sm-6">
                     <?php if ($check_post != false) { ?>
                     <div class="card post-card"><a href="article.php?id=<?php echo $post["id"]; ?>">
-                            <img class="card-img-top" src="images/thumb/<?php echo $post['thumb']; ?>" alt="Card image">
+                            <img class="card-img-top" src="images/thumb/<?php echo $post['thumb']; ?>"
+                                alt="<?php echo $post['title']; ?>">
                             <div class="categories"><?php echo $post["category"]; ?></div>
                             <div class="card-body">
                                 <p class="card-title"><?php echo $post["title"]; ?></p>
                         </a>
                         <div class="post-info">
                             <div class="row">
-                                <div class="col"><?php echo $post["name"]; ?></div>
-                                <div class="col">views <?php echo  $format->views($post["views"]); ?></div>
-                                <div class="col"><?php echo $format->time_ago($post["date"]); ?></div>
+                                <div class="col small"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                    <?php echo $post["name"]; ?></div>
+                                <div class="col small"><i class="fa fa-eye" aria-hidden="true"></i>
+                                    <?php echo  $format->views($post["views"]); ?></div>
+                                <div class="col small"><i class="fa fa-calendar" aria-hidden="true"></i>
+                                    <?php $date = date_create($post["date"]);
+                          echo date_format($date, "M/d/y "); ?></div>
                             </div>
                         </div>
                     </div>
@@ -189,9 +209,12 @@ if ($settings['site_status'] === 'on') {
                     <img src="images/thumb/<?php echo $post['thumb']; ?>" /><?php echo $post["title"]; ?>
                     <div class="post-info">
                         <div class="row">
-                            <div class="col"><?php echo $post["name"]; ?></div>
-                            <div class="col">views <?php echo $format->views($post["views"]); ?></div>
-                            <div class="col"><?php echo $format->time_ago($post["date"]); ?></div>
+                            <div class="col small"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                <?php echo $post["name"]; ?></div>
+                            <div class="col small"><i class="fa fa-eye" aria-hidden="true"></i>
+                                <?php echo $format->views($post["views"]); ?></div>
+                            <div class="col small"><i class="fa fa-calendar" aria-hidden="true"></i>
+                                <?php echo $format->time_ago($post["date"]); ?></div>
                         </div>
                     </div>
                 </a>
@@ -209,9 +232,9 @@ if ($settings['site_status'] === 'on') {
       while ($cate = $result->fetch_assoc()) {
 
       ?>
-        <a href="?category=<?php echo $cate["category"]; ?>"
-            class="list-group-item list-group-item-action"><?php echo $cate["category"]; ?><span
-                class="badge"><?php echo $cate["total"]; ?></span></a>
+        <a href="?category=<?php echo $cate["category"]; ?>" class="list-group-item list-group-item-action"><span
+                class="small"><i class="fa fa-hashtag" aria-hidden="true"></i>
+            </span><?php echo $cate["category"]; ?><span class="badge"><?php echo $cate["total"]; ?></span></a>
         <?php } ?>
     </div>
 </div>

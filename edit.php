@@ -1,39 +1,42 @@
 <?php
 require("include/header.php");
 //object
-    $main=new main();
-    $user=new user();
-    $validate=new validation();
-    $img=new image();
-    $uid=$user->id();
-if ($user->check_usr()==false) { header("location: index"); exit(); } 
-if($settings['site_status']==='on'){
-$post_id=$_GET['id'];
-$num_rows=$main->num_rows("select * from content where id='$post_id' and uid='$uid'");
-if($num_rows==1){
-   if (isset($_POST["submit"]) and !empty(trim($_POST['content'])) and $_SERVER['REQUEST_METHOD'] == "POST" and !empty(trim($_POST['title'])) ) {
-$title=$validate->validate($_POST['title']);
-$category=$validate->validate($_POST['category']);
-$content=$validate->post_validate($_POST['content']);
-if(isset($_FILES['thumb']) and !empty($_FILES['thumb'])){
-$thumb_name=uniqid().".png";
-$destination="images/thumb/".$thumb_name;
-$img->compress('thumb',$destination,20);
-}else{
- $thumb_name=$post['thumb'];
+$main = new main();
+$user = new user();
+$validate = new validation();
+$img = new image();
+$uid = $user->id();
+if ($user->check_usr() == false) {
+    header("location: index");
+    exit();
 }
-$status_query=$main->db_query("content","id",$post_id);
-$status=$status_query['status'];
-$update=$main->update("UPDATE `content` SET `title`='$title',`thumb`='$thumb_name',`content`='$content',`category`='$category',`status`='$status' WHERE id='$post_id' and uid='$uid';
+if ($settings['site_status'] === 'on') {
+    $post_id = $_GET['id'];
+    $num_rows = $main->num_rows("select * from content where id='$post_id' and uid='$uid'");
+    if ($num_rows == 1) {
+        if (isset($_POST["submit"]) and !empty(trim($_POST['content'])) and $_SERVER['REQUEST_METHOD'] == "POST" and !empty(trim($_POST['title']))) {
+            $title = $validate->validate($_POST['title']);
+            $category = $validate->validate($_POST['category']);
+            $content = $validate->post_validate($_POST['content']);
+            if (isset($_FILES['thumb']) and !empty($_FILES['thumb'])) {
+                $thumb_name = uniqid() . ".png";
+                $destination = "images/thumb/" . $thumb_name;
+                $img->compress('thumb', $destination, 20);
+            } else {
+                $thumb_name = $post['thumb'];
+            }
+            $status_query = $main->db_query("content", "id", $post_id);
+            $status = $status_query['status'];
+            $update = $main->update("UPDATE `content` SET `title`='$title',`thumb`='$thumb_name',`content`='$content',`category`='$category',`status`='$status' WHERE id='$post_id' and uid='$uid';
 ");
-if ($update) {
-  $submited="Updated";
-} else {
-  echo "<b>Error</b>";
-}
-}
-$query=$main->select("select * from content where id='$post_id' and uid='$uid'");
-$post=$query->fetch_assoc();
+            if ($update) {
+                $submited = "Updated";
+            } else {
+                echo "<b>Error</b>";
+            }
+        }
+        $query = $main->select("select * from content where id='$post_id' and uid='$uid'");
+        $post = $query->fetch_assoc();
 ?>
 <title>Edit Post</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,11 +62,11 @@ $post=$query->fetch_assoc();
             <div class="col-md-12 col">
                 <div class="card card-outline card-info">
                     <div class="card-header">
-                        <?php if(isset($submited)){ ?> <center>
+                        <?php if (isset($submited)) { ?> <center>
                             <div class="alert alert-success">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <?php echo $submited;?></div>
-                        </center><?php }?>
+                                <?php echo $submited; ?></div>
+                        </center><?php } ?>
                         <!-- tools box -->
                         <div class="card-tools">
 
@@ -82,7 +85,7 @@ $post=$query->fetch_assoc();
 
                                     <input type="text" class="form-control" name="title" id="last_name"
                                         placeholder="Title" title="Write your post title"
-                                        value="<?php echo $post['title'];?>" required="true">
+                                        value="<?php echo $post['title']; ?>" required="true">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -91,14 +94,14 @@ $post=$query->fetch_assoc();
                                         <h6>category</h6>
                                     </label>
                                     <select name="category" id="categories" class="form-control">
-                                        <?php 
-                              $main=new main();
-                              $select=$main->select("select category from categories where role='user' order by category;");
-                              while ($cate=$select->fetch_assoc()){
-                              ?>
+                                        <?php
+                                                $main = new main();
+                                                $select = $main->select("select category from categories where role='user' order by category;");
+                                                while ($cate = $select->fetch_assoc()) {
+                                                ?>
                                         <option value="<?php echo $cate['category']; ?>">
                                             <?php echo $cate['category']; ?></option>
-                                        <?php }?>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -127,11 +130,11 @@ $post=$query->fetch_assoc();
         </div>
     </section>
     </div>
-    <?php 
-               }else{
-                echo "<center>Error</center>";
-               }
-              include('include/footer.php');?>
+    <?php
+    } else {
+        echo "<center>Error</center>";
+    }
+    include('include/footer.php'); ?>
     <!-- jQuery -->
     <script src="lib/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -152,7 +155,7 @@ $post=$query->fetch_assoc();
 </body>
 
 </html>
-<?php }else{?>
+<?php } else { ?>
 <center>
     <h3>Under Maintenance</h3>
 </center>

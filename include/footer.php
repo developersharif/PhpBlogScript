@@ -29,8 +29,12 @@ $(".dark-mode").ready(function() {
     $("body,input,textarea,select,option,a,button,div,nav,code,p,li,h1,h2,h3,h4").addClass("dark-mode");
 });
 </script>
+<script>
+$('#content, #nav,a,div').ajaxify();
+</script>
 <?php } ?>
 <!--javascript -->
 <script src="lib/function.js" type="text/javascript"></script>
 <script src="lib/jquery.min.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/plugins/ajaxify/ajaxify.min.js"></script>

@@ -21,8 +21,8 @@ $rows = mysqli_num_rows($result);
 
 <body>
     <?php
-  if ($rows > 0) {
-  ?>
+    if ($rows > 0) {
+    ?>
     <div class="container-fluid">
         <div class="row">
             <!--left side start-->
@@ -36,15 +36,16 @@ $rows = mysqli_num_rows($result);
                     <div class="list-group ">
                         <?php
 
-              while ($post = $result->fetch_assoc()) {
-              ?>
+                            while ($post = $result->fetch_assoc()) {
+                            ?>
                         <div class="p-post">
                             <a href="article.php?id=<?php echo $post["id"]; ?>"
                                 class="list-group-item list-group-item-action">
                                 <img src="images/p3.jpg" /><?php echo $post["title"]; ?>
                                 <div class="post-info">
                                     <div class="row">
-                                        <div class="col"><?php echo $format->views($post["views"]); ?></div>
+                                        <div class="col">Views <?php echo $format->views($post["views"]); ?></div>
+                                        <div class="col">Date <?php echo $format->time_ago($post["date"]); ?></div>
                                     </div>
                                 </div>
                             </a>
@@ -57,11 +58,11 @@ $rows = mysqli_num_rows($result);
         </div>
     </div>
     <?php
-  } else {
-    echo "<center>Result Not Found<br><a href='index.php'>Home</a></center>";
-  }
-  include("include/footer.php");
-  ?>
+    } else {
+        echo "<center>Result Not Found<br><a href='index.php'>Home</a></center>";
+    }
+    include("include/footer.php");
+    ?>
 </body>
 
 </html>

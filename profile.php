@@ -216,6 +216,7 @@ if ($settings['site_status'] === 'on') {
                                 </div>
                             </a>
                         </div>
+                        <hr>
 
 
                         <?php
