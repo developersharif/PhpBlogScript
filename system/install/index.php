@@ -13,18 +13,14 @@ if (isset($_POST["submit"])) {
     $dbuser = $_POST["dbusername"];
     $dbpass = $_POST["dbpass"];
     $dbhost = $_POST["host"];
-    $conn = new mysqli("$dbhost", "$dbuser", "$dbpass");
-    $sql = "CREATE DATABASE $dbname";
+    $conn = new mysqli("$dbhost", "$dbuser", "$dbpass", "$dbname");
     // Check connection
     if ($conn->connect_errno) {
         header("location: ?failed");
         exit();
     } else {
-        $create_db = $conn->query($sql);
-        if ($create_db) {
+        if ($conn) {
             $sql_file = "sql/database.sql";
-            $conn = new mysqli("$dbhost", "$dbuser", "$dbpass", "$dbname");
-
             $templine = '';
             $lines = file($sql_file);
             foreach ($lines as $line) {

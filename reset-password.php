@@ -10,9 +10,6 @@ $reset_obj = new reset_pass();
 if (isset($_POST['submit']) and !empty($_POST['email'])) {
     $email = $_POST['email'];
     $check = $reset_obj->reset($email);
-    if ($check) {
-        $info_msg = "Please check your email to reset your password!";
-    }
 }
 if (isset($_POST['submit']) and !empty($_POST['pass']) and !empty($_POST['cpass'])) {
     $pass1 = $_POST['pass'];
@@ -46,11 +43,19 @@ if (isset($_POST['submit']) and !empty($_POST['pass']) and !empty($_POST['cpass'
     <?php if (!isset($_GET['token'])) : ?>
     <div class="container">
         <div class="row">
-            <?php if (isset($info_msg)) { ?> <center>
+            <?php     if ( $_GET['check']==='true') {
+        $info_msg = "Please check your email to reset your password!";
+    } if (isset($info_msg) &  $_GET['check']==='true' ) { ?> <center>
                 <div class="alert alert-success">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     <?php echo $info_msg; ?></div>
-            </center><?php } ?>
+            </center><?php }elseif($_GET['check']==='false'){ ?>
+
+                <div class="alert alert-danger">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                     Something went wrong!</div>
+
+            <?php } ?>
             <div class="col-12">
                 <h4>Password Reset.</h4>
                 <form action="" method="post">

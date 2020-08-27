@@ -367,7 +367,7 @@ if (isset($_POST["settings"])) {
 
                     </td>
                     <td>
-                        <img src="../images/assets/bannar.png" style="max-height: 180px;" />
+                        <img src="../images/assets/bannar.png" style="max-height: 50px;" />
                     </td>
 
                     <td class="project-actions text-right">

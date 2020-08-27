@@ -1,174 +1,72 @@
 <?php
 require("include/header.php");
 ?>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Status</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
 <style>
-body {
-    padding: 16px;
-    background-color: #e8e8e8;
-}
-
-.chart-container {
-    position: relative;
-    height: 100%;
-    width: 100%;
-}
-
-.isResizable {
-    background-color: #ffffff;
-    margin: 0px auto;
-    padding: 5px;
-    border: 1px solid #d8d8d8;
-    overflow: hidden;
-    /* Not usable in IE */
-    /* resize: both; */
-
-    width: 800px;
-    height: 400px;
-    min-width: 280px;
-    min-height: 280px;
-    max-width: 1200px;
-    max-height: 600px;
-}
-
-#updateChart {
-    background: white;
-    border: 1px solid #d8d8d8;
-    width: 160px;
-    padding: 10px;
+.chart {
+    border: 3px solid royalblue;
 }
 </style>
-<center>under development</center>
-<div class="isResizable">
-    <div class="chart-container">
-        <canvas id="chart"></canvas>
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart">
+            <canvas id="myChart" width="400" height="200"></canvas>
+        </div>
+
+
     </div>
 </div>
-
 <script>
-window.chartColors = {
-    red: 'rgb(255, 99, 132)',
-    orange: 'rgb(255, 159, 64)',
-    yellow: 'rgb(255, 205, 86)',
-    green: 'rgb(75, 192, 192)',
-    blue: 'rgb(54, 162, 235)',
-    purple: 'rgb(153, 102, 255)',
-    grey: 'rgb(201, 203, 207)'
-};
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line', // also try bar or other graph types
 
-window.randomScalingFactor = function() {
-    return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
-};
-
-var config = {
-    type: 'line',
+    // The data for our dataset
     data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: ["Jun ", "Jul ", "Aug ", "Sep ", "Oct ", "Nov ", "Dec ", "Jan ",
+            "Feb ", "Mar ", "Apr ", "May "
+        ],
+        // Information about the dataset
         datasets: [{
-            label: "Unfilled",
-            fill: false,
-            backgroundColor: window.chartColors.blue,
-            borderColor: window.chartColors.blue,
-            data: [
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor()
-            ],
-        }, {
-            label: "Dashed",
-            fill: false,
-            backgroundColor: window.chartColors.green,
-            borderColor: window.chartColors.green,
-            borderDash: [5, 5],
-            data: [
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor()
-            ],
-        }, {
-            label: "Filled",
-            backgroundColor: window.chartColors.red,
-            borderColor: window.chartColors.red,
-            data: [
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor()
-            ],
-            fill: true,
+            label: "Rainfall",
+            backgroundColor: 'lightblue',
+            borderColor: 'royalblue',
+            data: [26.4, 39.8, 66.8, 66.4, 40.6, 55.2, 77.4, 69.8, 57.8, 76, 110.8, 142.6],
         }]
     },
+
+    // Configuration options
     options: {
-        maintainAspectRatio: false,
-        responsive: true,
+        layout: {
+            padding: 10,
+        },
         legend: {
-            position: 'top'
+            position: 'bottom',
         },
         title: {
-            position: 'bottom',
             display: true,
-            text: '-'
-        },
-        tooltips: {
-            mode: 'index',
-            intersect: false,
-        },
-        hover: {
-            mode: 'nearest',
-            intersect: true
+            text: 'Under Development'
         },
         scales: {
-            xAxes: [{
-                display: true,
+            yAxes: [{
                 scaleLabel: {
                     display: true,
-                    labelString: 'Month'
+                    labelString: ''
                 }
             }],
-            yAxes: [{
-                display: true,
+            xAxes: [{
                 scaleLabel: {
                     display: true,
-                    labelString: 'Value'
+                    labelString: 'Month of the Year'
                 }
             }]
         }
     }
-};
-
-//Draw chart
-window.onload = function() {
-    var ctx = document.getElementById("chart").getContext("2d");
-    window.myLine = new Chart(ctx, config);
-};
-
-//Update type of chart 
-$('#updateChart').click(function(e) {
-    var chart = window.myLine;
-    var types = ['line', 'bar', 'bubble'];
-
-    chart.config.type = types[Math.floor(Math.random() * 3)];
-    chart.destroy();
-
-    var ctx = document.getElementById("chart").getContext("2d");
-    window.myLine = new Chart(ctx, chart.config);
 });
-
-//Use JQUeryUI to resize the div with IE 11
-$(".isResizable").resizable();
 </script>
-
-
 <?php
 require("include/footer.php");
 ?>

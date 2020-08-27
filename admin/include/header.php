@@ -4,6 +4,11 @@ $main = new main();
 $admin = new admin();
 $user = new user();
 $format = new format();
+$db_check = $main->db_check();
+if ($db_check != true) {
+    header("location: ../system/install/index.php");
+    exit;
+}
 if (isset($_COOKIE['c_user'])) {
 
     if ($admin->admin_check($_COOKIE['c_user']) == false) {

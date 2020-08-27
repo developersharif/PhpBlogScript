@@ -20,8 +20,7 @@ if ($settings['site_status'] === 'on') {
 
 <!-- Facebook -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="<?php echo $settings['site_title']; ?>">
-<meta property="og:description" content="<?php echo $settings['site_description']; ?>">
+<meta property="og:title" content="<?php echo $settings['site_description']; ?>">
 <meta property="og:image" content="images/assets/bannar.png">
 
 <!-- Twitter -->
