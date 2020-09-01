@@ -24,6 +24,16 @@ $logo_obj = json_decode($settings['site_logo']);
     <link rel="stylesheet" href="lib/style.css">
     <script src="lib/jquery.min.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-176915971-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-176915971-1');
+</script>
+
     <style>
     :root {
         --primary-color-bg: <?php echo $settings['site_color'];

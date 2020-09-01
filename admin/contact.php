@@ -12,7 +12,19 @@ $inbox_count=$main->num_rows("SELECT * FROM contact WHERE status='0'");
     <section class="content">
       <div class="row">
         <div class="col-md-3">
+        <?php     if ( $_GET['status']==='true') {
+        $info_msg = "Mail has benn send!";
+    } if (isset($info_msg) &  $_GET['status']==='true' ) { ?> <center>
+                <div class="alert alert-success">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <?php echo $info_msg; ?></div>
+            </center><?php }elseif($_GET['status']==='false'){ ?>
 
+                <div class="alert alert-danger">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                     Something went wrong!</div>
+
+            <?php } ?>
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Folders</h3>
@@ -62,22 +74,9 @@ $inbox_count=$main->num_rows("SELECT * FROM contact WHERE status='0'");
             <!-- /.card-header -->
             <div class="card-body p-0">
               <div class="mailbox-controls">
-                <!-- Check all button -->
-                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
-                </button>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
-                </div>
-                <!-- /.btn-group -->
+
                 <button type="button" class="btn btn-default btn-sm"><a href="contact.php"><i class="fas fa-sync-alt"></i></a></button>
-                <div class="float-right">
-                  1-50/200
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
-                  </div>
-                  <!-- /.btn-group -->
-                </div>
+
                 <!-- /.float-right -->
               </div>
               <div class="table-responsive mailbox-messages">
@@ -112,10 +111,8 @@ $inbox_count=$main->num_rows("SELECT * FROM contact WHERE status='0'");
             <!-- /.card-body -->
             <div class="card-footer p-0">
               <div class="mailbox-controls">
-
-                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
                 <div class="float-right">
-                  1-50/200
+                 
                   <div class="btn-group">
                     <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
                     <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>

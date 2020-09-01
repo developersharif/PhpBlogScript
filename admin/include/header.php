@@ -204,6 +204,12 @@ $settings = $site_status->fetch_assoc();
                                         <p class="text">Settings</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="mail-config" class="nav-link">
+                                        <i class="nav-icon fa fa-comment"></i>
+                                        <p class="text">Mail</p>
+                                    </a>
+                                </li>
                         </li>
                     </ul>
                     </li>

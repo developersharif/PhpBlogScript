@@ -111,12 +111,14 @@ if (isset($_GET['action']) and $_GET['action'] == 'delete' and isset($_GET['id']
                                     value="<?php echo $inbox['email']; ?>">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" name="subject" placeholder="Subject:">
+                                <input class="form-control" name="sub" placeholder="Subject" required>
                             </div>
                             <div class="form-group">
                                 <textarea id="compose-textarea" name="body" class="form-control" style="height: 300px"
-                                    placeholder="Email"></textarea>
+                                    placeholder="Body" required></textarea>
                             </div>
+                            <input type="hidden" name="redirect" value="contact.php">
+                            <input type="hidden" name="send_mail" value="true">
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">

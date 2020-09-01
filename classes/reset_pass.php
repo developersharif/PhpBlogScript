@@ -13,7 +13,7 @@ class reset_pass extends main
             $site = $_SERVER['SERVER_NAME'];
             $to = $user_email;
             $subject = "Password Reset.";
-            $message = '<a href="http://' . $site . '/CMS/reset-password.php?token=' . $token . '">' . 'Click here to reset password</a><br>' . $site;
+            $message =  $site . '/CMS/reset-password.php?token=' . $token ;
 
            header("location: mailer/send.php?send_mail=true&to=$to&sub=$subject&body=$message&redirect=reset-password.php");
            exit;
