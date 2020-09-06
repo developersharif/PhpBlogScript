@@ -42,17 +42,9 @@ if ($settings['site_status'] === 'on') {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="lib/plugins/fontawesome-free/css/all.min.css">
-<link rel="stylesheet" href="lib/dist/editor/dist/ui/trumbowyg.min.css">
-<link rel="stylesheet" href="lib/dist/editor/dist/plugins/colors/ui/trumbowyg.colors.css">
-<link rel="stylesheet" href="lib/dist/editor/dist/plugins/emoji/ui/trumbowyg.emoji.css">
-<link rel="stylesheet" href="lib/dist/editor/dist/plugins/table/ui/trumbowyg.table.min.css">
+<link rel="stylesheet" href="lib/plugins/summernote/summernote.min.css">
 <!-- Google Font: Source Sans Pro -->
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-<style>
-.trumbowyg-editor table td {
-    border: 1px solid #747474;
-    padding: 5px;
-</style>
 </head>
 
 <body>
@@ -112,7 +104,6 @@ if ($settings['site_status'] === 'on') {
                                 <textarea class="textarea content" id="editor" placeholder="Place some text here"
                                     name="content"
                                     style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
-                                    value='<?php echo $post["content"]; ?>'
                                     required><?php echo $post['content']; ?></textarea>
                             </div>
                             <div class="mb-3">
@@ -139,17 +130,12 @@ if ($settings['site_status'] === 'on') {
     <script src="lib/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="lib/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/dist/editor/dist/trumbowyg.min.js"></script>
-    <script src="lib/dist/editor/dist/plugins/colors/trumbowyg.colors.js"></script>
-    <script src="lib/dist/editor/dist/plugins/base64/trumbowyg.base64.js"></script>
-    <script src="lib/dist/editor/dist/plugins/emoji/trumbowyg.emoji.js"></script>
-    <script src="lib/dist/editor/dist/plugins/resizimg/trumbowyg.resizimg.js"></script>
-    <script src="lib/dist/editor/dist/plugins/resizimg/resizable-resolveconflict.min.js"></script>
-    <script src="lib/dist/editor/dist/plugins/table/trumbowyg.table.js"></script>
-    <script src="lib/dist/editor/dist/plugins/template/trumbowyg.template.js"></script>
-    <script src="lib/dist/editor/dist/plugins/upload/trumbowyg.upload.js"></script>
+    <script src="lib/plugins/summernote/summernote.min.js"></script>
+   
     <script type="text/javascript" charset="utf-8">
-    $('#editor').trumbowyg();
+     $(function() {
+        $('.textarea').summernote()
+    })
     </script>
 
 </body>

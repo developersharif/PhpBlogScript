@@ -6,4 +6,6 @@ require('classes/ip_cls.php');
 require('classes/validation.php');
 require("classes/format.php");
 require("classes/image_cls.php");
+require('classes/url.php');
+include('classes/counter.php');
 ?>

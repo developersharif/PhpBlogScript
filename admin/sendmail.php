@@ -21,7 +21,7 @@ if( $_POST["send_mail"]==true and $referer["host"] === $chost){
     $redirect=$_REQUEST["redirect"];
      try {
          //Server settings
-         $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+         //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
          $mail->isSMTP();                                            // Send using SMTP
          $mail->Host       = $more->host;                    // Set the SMTP server to send through
          $mail->SMTPAuth   = true;                                   // Enable SMTP authentication

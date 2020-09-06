@@ -58,7 +58,7 @@ if (isset($_POST['submit']) and !empty($_POST['pass']) and !empty($_POST['cpass'
             <?php } ?>
             <div class="col-12">
                 <h4>Password Reset.</h4>
-                <form action="" method="post">
+                <form action="mailer/send.php" method="post">
                     <input type="email" name="email" placeholder="Enter your email" class="form-control"
                         style="color:black" require></input>
                     <input type="submit" class="btn" value="Submit" name="submit">

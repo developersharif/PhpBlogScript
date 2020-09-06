@@ -2,6 +2,13 @@
 if ($settings['site_status'] === 'on') {
   $main = new main();
   $format = new format();
+  $url_cls=new url();
+  $protocol=$url_cls->protocol;
+  $domain=$url_cls->domain;
+  $dirname=$url_cls->dirname;
+  $url_array = array("protocol" =>  "$protocol","domain" =>  "$domain","dirname" =>  "$dirname" );
+  $url_obj=json_encode($url_array);
+  $main->update("update settings set site_url='$url_obj' where id=1;");
   $check_post = $main->num_rows("select * from content");
   $perpage = $settings['perpage_post'];
   if (isset($_GET["p"])) {
@@ -37,7 +44,6 @@ if ($settings['site_status'] === 'on') {
     </div><?php } ?>
     <div class="row">
         <div class="col-md-8">
-
             <!--post start-->
             <?php if (!isset($_GET['category'])) { ?>
             <div class="row">

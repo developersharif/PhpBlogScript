@@ -8,6 +8,7 @@ if ($db_check != true) {
     header("location: system/install/index.php");
     exit;
 }
+$counter_cls=new counter();
 $site_status = $main_cls->select("select * from settings");
 $settings = $site_status->fetch_assoc();
 $logo_obj = json_decode($settings['site_logo']);

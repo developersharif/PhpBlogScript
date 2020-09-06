@@ -206,7 +206,7 @@ $settings = $site_status->fetch_assoc();
                                 </li>
                                 <li class="nav-item">
                                     <a href="mail-config" class="nav-link">
-                                        <i class="nav-icon fa fa-comment"></i>
+                                    <i class="nav-icon fas fa-mail-bulk"></i>
                                         <p class="text">Mail</p>
                                     </a>
                                 </li>
