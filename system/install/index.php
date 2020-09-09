@@ -33,7 +33,7 @@ if (isset($_POST["submit"])) {
                 }
             }
             if ($create_tbl) {
-                echo "Tables imported successfully!";
+                echo '<button><a href="account.php?admin">Create admin account</a></button>';
                 $config_file = "../../configer/config.php";
                 $db_conn_code = "<?php
                 define('host', '$dbhost');
